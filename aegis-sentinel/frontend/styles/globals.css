@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Root Variables ─────────────────────────────────────── */
+:root {
+  --bg:        #020813;
+  --card:      #06111f;
+  --border:    #0d2137;
+  --blue:      #00d4ff;
+  --purple:    #7c3aed;
+  --green:     #00ff9d;
+  --yellow:    #ffd700;
+  --orange:    #ff6b35;
+  --red:       #ff2d55;
+}
+
+/* ── Base ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: #e2e8f0;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Cyber Grid Background ──────────────────────────────── */
+.cyber-grid-bg {
+  background-image:
+    linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Glassmorphism Panel ────────────────────────────────── */
+.glass-panel {
+  background: linear-gradient(135deg, rgba(6,17,31,0.85) 0%, rgba(2,8,19,0.92) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 212, 255, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.04);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.glass-panel:hover {
+  border-color: rgba(0,212,255,0.22);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,212,255,0.06), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+/* ── Neon Text ──────────────────────────────────────────── */
+.neon-blue   { color: var(--blue);   text-shadow: 0 0 10px rgba(0,212,255,0.6); }
+.neon-green  { color: var(--green);  text-shadow: 0 0 10px rgba(0,255,157,0.6); }
+.neon-red    { color: var(--red);    text-shadow: 0 0 10px rgba(255,45,85,0.6); }
+.neon-purple { color: var(--purple); text-shadow: 0 0 10px rgba(124,58,237,0.6); }
+.neon-yellow { color: var(--yellow); text-shadow: 0 0 10px rgba(255,215,0,0.6); }
+.neon-orange { color: var(--orange); text-shadow: 0 0 10px rgba(255,107,53,0.6); }
+
+/* ── Neon Borders ───────────────────────────────────────── */
+.border-neon-blue   { border-color: var(--blue);   box-shadow: 0 0 12px rgba(0,212,255,0.3); }
+.border-neon-green  { border-color: var(--green);  box-shadow: 0 0 12px rgba(0,255,157,0.3); }
+.border-neon-red    { border-color: var(--red);    box-shadow: 0 0 12px rgba(255,45,85,0.3); }
+.border-neon-yellow { border-color: var(--yellow); box-shadow: 0 0 12px rgba(255,215,0,0.3); }
+.border-neon-orange { border-color: var(--orange); box-shadow: 0 0 12px rgba(255,107,53,0.3); }
+
+/* ── Scan Line ────────────────────────────────────────────*/
+.scan-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.04) 2px,
+    rgba(0,0,0,0.04) 4px
+  );
+}
+
+/* ── Glitch Effect ──────────────────────────────────────── */
+@keyframes glitch-clip-1 {
+  0%,100% { clip-path: inset(0 0 95% 0); }
+  50%      { clip-path: inset(30% 0 60% 0); }
+}
+@keyframes glitch-clip-2 {
+  0%,100% { clip-path: inset(80% 0 0 0); }
+  50%      { clip-path: inset(0 0 50% 0); }
+}
+.glitch-text {
+  position: relative;
+}
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+}
+.glitch-text::before {
+  left: 2px;
+  color: var(--red);
+  animation: glitch-clip-1 0.6s infinite;
+}
+.glitch-text::after {
+  left: -2px;
+  color: var(--blue);
+  animation: glitch-clip-2 0.6s infinite;
+}
+
+/* ── Risk Flash ─────────────────────────────────────────── */
+@keyframes riskFlash {
+  0%,100% { box-shadow: none; }
+  50%      { box-shadow: 0 0 40px rgba(255,45,85,0.4), inset 0 0 40px rgba(255,45,85,0.05); }
+}
+.risk-flash {
+  animation: riskFlash 1s ease-in-out infinite;
+}
+
+/* ── Pulse Dot ──────────────────────────────────────────── */
+@keyframes pulseDot {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.6); opacity: 0.4; }
+}
+.pulse-dot { animation: pulseDot 1.5s ease-in-out infinite; }
+
+/* ── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,212,255,0.3); }
+
+/* ── RainbowKit override ─────────────────────────────────*/
+[data-rk] {
+  --rk-colors-accentColor: #00d4ff !important;
+  --rk-colors-accentColorForeground: #020813 !important;
+  --rk-colors-connectButtonBackground: rgba(6,17,31,0.9) !important;
+  --rk-colors-connectButtonInnerBackground: rgba(13,33,55,0.9) !important;
+  --rk-colors-connectButtonText: #00d4ff !important;
+  --rk-fonts-body: 'JetBrains Mono', monospace !important;
+}
+
+/* ── Mono font helper ───────────────────────────────────── */
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+
+/* ── Recharts overrides ──────────────────────────────────*/
+.recharts-polar-grid-angle line { stroke: rgba(0,212,255,0.1); }
+.recharts-polar-grid-concentric .recharts-polar-grid-concentric-polygon { stroke: rgba(0,212,255,0.1); }
+.recharts-radar-polygon { transition: all 0.5s ease; }

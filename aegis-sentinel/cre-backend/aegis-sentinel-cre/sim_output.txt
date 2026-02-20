@@ -1,0 +1,25 @@
+Initializing...
+! Using default private key for chain write simulation. To use your own key, set CRE_ETH_PRIVATE_KEY in your .env file or system environment.
+Checking RPC connectivity...
+! Some RPCs in settings are not functioning properly, please check: RPC health check failed:                                     
+[ethereum-testnet-sepolia] failed RPC health check: Post "https://ethereum-sepolia-rpc.publicnode.com": context deadline exceeded
+Compiling workflow...
+Γ£ô Workflow compiled
+2026-02-20T12:03:53Z [SIMULATION] Simulator Initialized
+
+2026-02-20T12:03:53Z [SIMULATION] Running trigger trigger=cron-trigger@1.0.0
+2026-02-20T12:03:53Z [USER LOG] msg="Starting Aegis Risk Scan" workflow=aegis-risk-oracle
+2026-02-20T12:04:04Z [USER LOG] msg="Market data fetch failed, using decentralized fallback" error="failed to execute capability: [2]Unknown: json: cannot unmarshal string into Go struct field .price of type float64"
+2026-02-20T12:04:04Z [USER LOG] msg="Aegis Risk Scan Complete" score=12 circuitBreaker=false
+
+Γ£ô Workflow Simulation Result:
+{
+  "AnomalyLevel": "low",
+  "CircuitBreaker": false,
+  "EthPrice": "2640.5",
+  "RiskScore": 12,
+  "Timestamp": "2026-02-20T06:34:04Z"
+}
+
+2026-02-20T12:04:04Z [SIMULATION] Execution finished signal received
+2026-02-20T12:04:04Z [SIMULATION] Skipping WorkflowEngineV2
