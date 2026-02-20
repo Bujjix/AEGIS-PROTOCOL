@@ -1,0 +1,21 @@
+{
+  "name": "aegis-sentinel",
+  "version": "1.0.0",
+  "description": "Decentralized security layer for smart contracts with Chainlink risk monitoring",
+  "scripts": {
+    "compile": "node node_modules/hardhat/internal/cli/cli.js compile",
+    "test": "node node_modules/hardhat/internal/cli/cli.js test",
+    "deploy": "node node_modules/hardhat/internal/cli/cli.js run scripts/deploy.js --network sepolia",
+    "simulate": "node node_modules/hardhat/internal/cli/cli.js run scripts/simulate-attack.js --network sepolia",
+    "node": "node node_modules/hardhat/internal/cli/cli.js node"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat": "^2.22.0"
+  },
+  "dependencies": {
+    "@chainlink/contracts": "^1.1.1",
+    "@openzeppelin/contracts": "^5.0.2",
+    "dotenv": "^16.4.5"
+  }
+}
